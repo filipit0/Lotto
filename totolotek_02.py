@@ -1,21 +1,24 @@
 import random
 
-tablica = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
-17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,
-34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49]
+# Zamiast wypisywac tablice recznie mozna ja wygenerowac:
+tablica =[]
+for i in range(1,50):
+    tablica.append(i)
+
+# tablica = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
+# 17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,
+# 34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49]
+
 
 podane = []
-i =0
 
 print("* * * * * * * * * * * *")
 print("* * *  L O T T O  * * *")
 print("* * * * * * * * * * * * \n")
 
-for x in range(6):
-    i+=1    
-    
+for x in range(1,7):
     while True:
-        print("Liczba ", i, " :", end =" ")
+        print("Liczba ", x, " :", end =" ") #ZMIENILEM - Wystarczy jedna zmienmna (zmienna sterujaca petle) jako licznik
         while True:
             try:
                 liczba = int(input("podaj liczbe z przedziału 1-49: " ))
@@ -32,16 +35,19 @@ for x in range(6):
             podane.append(liczba)
             break
             
-
-print(" Twoje liczby to: ", podane, "\n" )  
+print()
+print(" Twoje liczby to: ", sorted(podane), "\n" )  #Posortowalem wyniki dla czytelnosci
 wylosowane = random.sample(tablica, k = 6)
-print(" wylosowane liczby to: ", wylosowane, "\n")
+print(" wylosowane liczby to: ", sorted(wylosowane), "\n")
 
 trafione = 0
-for x in range(6):
-    if podane[x] in wylosowane:
+#for x in range(6):              - TUTAJ TYLO TAKA KOSMETYKA
+#    if podane[x] in wylosowane:
+
+for wartosc in podane:
+    if wartosc in wylosowane:
         trafione += 1
-        print(" trafiłeś: ", podane[x]  )
+        print(" trafiłeś: ", wartosc  )
 
 if trafione == 3:
     print("3 trafione")
